@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="container">
+    <!-- START (view 0) -->
+    <div class="view view--start center">
+        <div class="content">
+            <h1 class="view__header">
+                Wirtualne laboratorium
+            </h1>
+            <h2 class="view__subheader">
+                Pomiar parametrów emisji gazów i czynników chemii procesowej na wybranych układach
+            </h2>
+
+            <div class="view__buttons">
+                <button class="btn btn--menu" onclick="switchView(1)">
+                    Wybrane przyrządy pomiarowe i ich funkcje
+                </button>
+                <button class="btn btn--menu" onclick="switchView(2)">
+                    Elektrownia z turbiną parową oraz kotłem opalanym
+                    paliwem stałym i wybrane pomiary
+                </button>
+                <button class="btn btn--menu" onclick="switchView(12)">
+                    Budowa elektrociepłowni i elektrowni parowo-gazowej
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WYBRANE PRZYRZADY POMIAROWE I ICH FUNKCJE (view 1) -->
+    <div class="view view--0">
+        <button class="btn btn--backArrow" onclick="backToStart()">
+            <img class="img" src="./img/back.svg" alt="back" />
+        </button>
+
+        <h1 class="view__header">
+            Wybrane przyrządy pomiarowe i ich funkcje
+        </h1>
+
+        <div class="machines scroll">
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(0)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines0">
+                <img class="machines__item__img" src="./img/analizator-krzemionki.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(1)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines1">
+                <img class="machines__item__img" src="./img/analizator-spalin.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(2)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines2">
+                <img class="machines__item__img" src="./img/analizator-wody.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(3)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines3">
+                <img class="machines__item__img" src="./img/miernik-drgan.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(4)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines4">
+                <img class="machines__item__img" src="./img/miernik-halasu.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(5)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines5">
+                <img class="machines__item__img" src="./img/przeplywomierz.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 onmouseover="playMachinesSound(6)"
+                 onmouseleave="stopMachinesSound()"
+                 id="machines6">
+                <img class="machines__item__img" src="./img/pylomierz.png" alt="grafika" />
+            </div>
+        </div>
+    </div>
+
+    <!-- WYBRANE POMIARY (views 2-11) -->
+    <div class="view view--menu">
+        <img class="img img--powerhouse" src="./img/elektrownia-tlo.png" alt="elektrownia" />
+
+        <h1 class="view__header view__header--menu">
+            Elektrownia z turbiną parową oraz kotłem opalanym paliwem stałym i wybrane pomiary
+        </h1>
+
+        <div class="menu">
+            <button class="btn btn--menu"
+                    onclick="switchView(3)">
+                Pomiar emisji spalin
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(4)">
+                Pomiar zapylenia spalin
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(5)">
+                Pomiar hałasu
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(6)">
+
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(7)">
+                Pomiar zawartości SiO<sub>2</sub> w parze świeżej
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(8)">
+                Poziom przewodności właściwej skroplin z kondensatora
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(9)">
+                Pomiar poziomu i temperatury wody zrzutowej do wód powierzchniowych
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(10)">
+                Poziom substancji ropopochodnych w ściekach pochłodniczych
+            </button>
+            <button class="btn btn--menu"
+                    onclick="switchView(11)">
+                Poziom drgań
+            </button>
+        </div>
+    </div>
+
+    <div class="view view--ex1">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru gazów pochodzących z emisji spalin, wyniki odczytaj
+                z wyświetlacza urządzenia pomiarowego i wpisz je w odpowiednie miejsca.
+                Następnie sprawdź, czy otrzymane wartości są zgodne z wymaganiami określonymi
+                w normie nr PN-EN 50379 i odpowiedz na zadane pytanie.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(1)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--1">
+            <p class="question__text">
+                Czy wykryta wartość każdego z gazów mieści się w zakresie pomiarowym zgodnym z wytycznymi?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(0)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(0)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj się
+                    z zakresem pomiarowym dla wybranych parametrów. Przedstawia go tabela zawierająca
+                    wymagania Polskiej Normy PN-EN 50379.
+
+                    <button class="btn btn--back"
+                            onclick="back(0)">
+                        Powrót
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="exContent exContent--1">
+            <img class="img--exContent1Table" src="./img/tabela1.png" alt="tabela" />
+
+            <div class="ex1ContentAnimation">
+                <button class="btn btn--start btn--start1" onclick="ex1Start()">
+                    Wykonaj pomiar
+                </button>
+
+                <img class="img" src="./img/komin1.png" alt="komin" />
+            </div>
+
+            <div class="table table--1">
+                <div class="table__header">
+                    <p class="table__cell">Gaz</p>
+                    <p class="table__cell">Wykryta wartość</p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">O<sub>2</sub></p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--1" onkeyup="ex1TableChange()" /> %
+                    </p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">CO</p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--2" onkeyup="ex1TableChange()" /> ppm
+                    </p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">NO</p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--3" onkeyup="ex1TableChange()" /> ppm
+                    </p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">NO<sub>x</sub></p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--4" onkeyup="ex1TableChange()" /> ppm
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view view--ex2">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru zapylenia spalin, wyniki odczytaj z wyświetlacza pyłomierza i wpisz je
+                w odpowiednie miejsca. Następnie sprawdź, czy otrzymane wartości są
+                zgodne z wymaganiami określonymi w Dz.U. z 2019 r. poz. 1931 i odpowiedz na zadane pytanie.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(2)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--2">
+            <p class="question__text">
+                Czy wykryte wartości pyłów zawieszonych PM2.5 i PM10 mieszczą się w zakresie
+                pomiarowym zgodnym z rozporządzeniem?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(1)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(1)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj się z zakresem pomiarowym
+                    dla wybranych parametrów. Przedstawia go tabela zawierająca wymagania rozporządzenia
+                    Ministra Środowiska z dnia 8 października 2019 r.
+
+                    <button class="btn btn--back"
+                            onclick="back(1)">
+                        Powrót
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="exContent exContent--2">
+            <img class="img--exContent2Table" src="./img/tabela2.png" alt="tabela" />
+
+            <div class="ex2ContentAnimation">
+                <button class="btn btn--start btn--start2" onclick="ex2Start()">
+                    Wykonaj pomiar
+                </button>
+
+                <img class="img" src="./img/komin1.png" alt="komin" />
+            </div>
+
+            <div class="table table--2">
+                <div class="table__header">
+                    <p class="table__cell">Substancja</p>
+                    <p class="table__cell">Wykryta wartość [µg/m<sup>3</sup>]</p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">PM2.5</p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--5" onkeyup="ex2TableChange()" />
+                    </p>
+                </div>
+                <div class="table__row">
+                    <p class="table__cell">PM10</p>
+                    <p class="table__cell">
+                        <input class="table__input table__input--6" onkeyup="ex2TableChange()" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view view--ex3">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru poziomu hałasu, wynik odczytaj z wyświetlacza miernika. Sprawdź, czy otrzymana
+                wartość jest zgodna z wytycznymi określonymi w rozporządzeniu Ministra Gospodarki i Pracy
+                w sprawie bezpieczeństwa i higieny pracy podczas prac związanych z narażeniem na hałas lub
+                drgania mechaniczne (Dz.U. z 2005 r. Nr 157, poz. 1318) oraz w normie PN-ISO 9612:2009, a następnie
+                odpowiedz na zadane pytanie.<br/>
+                Zgodnie z normą urządzenia zainstalowane w pomieszczeniu kotłowni mogą emitować w odległości 1 m od
+                urządzenia dopuszczalny poziom dźwięku (LAmax = 85 dB).
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(3)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--3">
+            <p class="question__text">
+                Czy wykryte wartości hałasu mieszczą się w zakresie pomiarowym zgodnym z wytycznymi?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(2)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(2)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj
+                    się z wytycznymi przedstawiającymi próg pomiarowy. Następnie przeanalizuj pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(2)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img class="ex3Image" src="./img/miernik-halasu-1.png" alt="miernik-halasu" />
+        <button class="btn btn--start btn--start3"
+                onclick="startEx3()">
+            Wykonaj pomiar
+        </button>
+
+        <div class="modal modal--1">
+            <div class="modal__inner">
+                <div class="intro">
+                    <p class="intro__text">
+                        Zapoznaj się z poniższą informacją, a następnie odpowiedz na pytanie.
+                        <br/><br/>
+                        „W przypadku przekroczenia wartości 80,0 dB może dojść do uszczerbku na zdrowiu, jeśli ekspozycja na hałas jest długotrwała. Wówczas pracodawca jest zobowiązany zaplanować i podjąć działania zmniejszające ryzyko zawodowe”.
+                        <br/><br/>
+                        Czy pracodawca powinien udostępnić środki indywidualnej ochrony słuchu pracownikom, którzy przebywają w kotłowni?
+                    </p>
+
+                    <button class="btn btn--sound" onclick="playModalIntro(0)">
+                        <img class="img" src="./img/sound.svg" alt="glosnik" />
+                    </button>
+                </div>
+
+                <div class="question__content--extra">
+                    <div class="question__options--extra">
+                        <button class="btn btn--questionOption"
+                                onclick="modalYes(0)">
+                            Tak
+                        </button>
+                        <button class="btn btn--questionOption"
+                                onclick="modalNo(0)">
+                            Nie
+                        </button>
+                    </div>
+
+                    <div class="question__rightFeedback--extra">
+                        Brawo, to jest poprawna odpowiedź.
+
+                        <button class="btn btn--back"
+                                onclick="backToStart()">
+                            Powrót
+                        </button>
+                    </div>
+
+                    <div class="question__wrongFeedback--extra">
+                        Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj
+                        się z wytycznymi przedstawiającymi próg pomiarowy hałasu oraz wynikiem
+                        pomiaru. Następnie odpowiedz na pytanie jeszcze raz.
+
+                        <button class="btn btn--back"
+                                onclick="modalBack(0)">
+                            Powrót
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view view--ex4">
+        <div class="intro">
+            <p class="intro__text">
+                Aby kocioł pracował bezpiecznie i poprawnie, niezbędne jest
+                utrzymanie właściwych parametrów wody. Uzdatniona woda ma wpływ na stan
+                wytwornicy pary, a woda zasilająca musi być stale poddawana analizie
+                potwierdzającej jej jakość.<br/>
+                Wykonaj pomiar wody zasilającej, a następnie sprawdź, czy otrzymane wartości
+                mieszczą się w przedstawionych poniżej zakresach.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(4)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--4">
+            <p class="question__text">
+                Czy otrzymane parametry mieszczą się w zakresie pomiarowym zgodnym z wytycznymi?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(3)">
+                        Nie
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(3)">
+                        Tak
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj
+                    się z wytycznymi przedstawionymi w tabeli. Następnie wykonaj
+                    i przeanalizuj pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(3)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view view--ex5">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru zawartości SiO<sub>2</sub> w parze świeżej. Monitorowanie krzemionki w parze jest
+                istotne, gdyż para przemieszczając się przez turbinę, wchodzi w kontakt z jej elementami
+                mechanicznymi. Skutkiem może być odkładająca się krzemionka na łopatkach turbiny, a efektem
+                konieczność naprawy lub wymiany łopatek. Zawartości SiO<sub>2</sub> w parze nie powinna
+                przekraczać 5 ppb.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(5)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--5">
+            <p class="question__text">
+                Czy wykryta wartość zawartości tlenku krzemu(IV) mieści się w zakresie pomiarowym zgodnym z wytycznymi?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(4)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(4)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia i zapoznaj się
+                    z wytycznymi przedstawiającymi próg pomiarowy. Następnie przeanalizuj
+                    pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(4)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img class="ex5Image" src="./img/krzemionka1.png" alt="miernik-halasu" />
+        <button class="btn btn--start btn--start5"
+                onclick="startEx5()">
+            Wykonaj pomiar
+        </button>
+    </div>
+
+    <div class="view view--ex6">
+        <div class="intro">
+            <p class="intro__text">
+                Dobranie odpowiednich metod uzdatniania wody oraz jej kondycjonowania przyczynia się do
+                długotrwałej pracy kotłów parowych. Przewodność kondensatu powinna być mniejsza od 30 μS/cm,
+                lecz wartość ta może być podwyższona przez związki wspomagające uzdatnianie. Dokonaj pomiaru
+                przewodności właściwej skroplin kondensatu, a następnie sprawdź, czy wartość ta mieści się
+                w wymaganym zakresie pomiarowym.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(6)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--6">
+            <p class="question__text">
+                Czy zmierzona wartość przewodności kondensatu mieści się w zakresie pomiarowym zgodnym z wytycznymi?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(5)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(5)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia
+                    i zapoznaj się z wytycznymi przedstawiającymi próg pomiarowy,
+                    a następnie przeanalizuj pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(5)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img class="ex6Image" src="./img/kondensator-1.png" alt="miernik-halasu" />
+        <button class="btn btn--start btn--start6"
+                onclick="startEx6()">
+            Wykonaj pomiar
+        </button>
+    </div>
+
+    <div class="view view--ex7">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru poziomu oraz temperatury wody zrzutowej, wyniki odczytaj
+                z wyświetlacza przepływomierza i wpisz je w odpowiednie miejsca.
+                Czy temperatura wody zrzutowej osiągnęła maksymalną wartość dopuszczalną, tj. 35°C?
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(7)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--7">
+            <p class="question__text">
+                Czy zmierzona wartość temperatury wody zrzutowej
+                osiągnęła maksymalną wartość dopuszczalną?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(6)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(6)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia
+                    i zapoznaj się z wytycznymi przedstawiającymi maksymalną
+                    wartość dopuszczalną temperatury wody zrzutowej, a następnie
+                    przeanalizuj pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(6)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img class="ex7Image" src="./img/rura1.png" alt="miernik-halasu" />
+        <button class="btn btn--start btn--start7"
+                onclick="startEx7()">
+            Wykonaj pomiar
+        </button>
+    </div>
+
+    <div class="view view--ex8">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru poziomu oraz temperatury wody zrzutowej, wyniki odczytaj
+                z wyświetlacza przepływomierza i wpisz je w odpowiednie miejsca.
+                Czy temperatura wody zrzutowej osiągnęła maksymalną wartość dopuszczalną, tj. 35°C?
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(8)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--8">
+            <p class="question__text">
+                Czy zmierzona wartość zawartości substancji
+                ropopochodnych jest niższa niż wartość dopuszczalna?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(7)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(7)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia
+                    i zapoznaj się z wytycznymi przedstawiającymi maksymalną
+                    dopuszczalną wartość zawartości substancji ropopochodnych,
+                    a następnie przeanalizuj pomiar jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(7)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img class="ex8Image" src="./img/stacja1.png" alt="miernik-halasu" />
+        <button class="btn btn--start btn--start8"
+                onclick="startEx8()">
+            Wykonaj pomiar
+        </button>
+    </div>
+
+    <div class="view view--ex9">
+        <div class="intro">
+            <p class="intro__text">
+                Dokonaj pomiaru poziomu drgań generatora napędzanego turbiną
+                osiągającą moc 165 kW. Wyniki odczytaj z wyświetlacza miernika drgań,
+                a następnie, po zapoznaniu się z granicznymi dopuszczalnymi poziomami
+                wibracji wg normy PN-EN-ISO 10816, odpowiedz na pytanie.
+            </p>
+
+            <button class="btn btn--sound" onclick="playIntro(9)">
+                <img class="img" src="./img/sound.svg" alt="glosnik" />
+            </button>
+        </div>
+
+        <div class="question question--9">
+            <p class="question__text">
+                Czy zmierzona wartość drgań generatora znajduje
+                się w stanie dopuszczalnym?
+            </p>
+            <div class="question__content">
+                <div class="question__options">
+                    <button class="btn btn--questionOption"
+                            onclick="yes(8)">
+                        Tak
+                    </button>
+                    <button class="btn btn--questionOption"
+                            onclick="no(8)">
+                        Nie
+                    </button>
+                </div>
+
+                <div class="question__rightFeedback">
+                    Brawo, to jest poprawna odpowiedź.
+
+                    <button class="btn btn--back"
+                            onclick="backToStart()">
+                        Powrót
+                    </button>
+                </div>
+
+                <div class="question__wrongFeedback">
+                    Niestety, to nie jest poprawna odpowiedź. Wróć do polecenia
+                    i zapoznaj się z wytycznymi przedstawiającymi maksymalną dopuszczalną
+                    wartość temperatury wody zrzutowej, a następnie przeanalizuj pomiar
+                    jeszcze raz.
+
+                    <button class="btn btn--back"
+                            onclick="back(8)">
+                        Dalej
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="exContent exContent--9">
+            <img class="img--exContent9Table" src="./img/tabela3.png" alt="tabela" />
+
+            <div class="ex9ContentAnimation">
+                <button class="btn btn--start btn--start9"
+                        onclick="startEx9()">
+                    Wykonaj pomiar
+                </button>
+
+                <img class="img" src="./img/miernik-drgan-1.png" alt="miernik-halasu" />
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BUDOWA ELEKTROCIEPLOWNI I ELEKTROWNI (view 11) -->
+    <div class="view view--11">
+        <button class="btn btn--backArrow" onclick="backToStart()">
+            <img class="img" src="./img/back.svg" alt="back" />
+        </button>
+
+        <h1 class="view__header">
+            Budowa elektrociepłowni i elektrowni parowo-gazowej
+        </h1>
+
+        <div class="machines machines--powerhouse">
+            <div class="machines__item"
+                 id="powerhouse0">
+                <img class="machines__item__img" src="./img/elektrocieplownia.png" alt="grafika" />
+            </div>
+            <div class="machines__item"
+                 id="powerhouse1">
+                <img class="machines__item__img" src="./img/elektrownia.png" alt="grafika" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>
